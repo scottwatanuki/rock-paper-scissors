@@ -35,11 +35,13 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+// declare three variables: win, tie, and lose for usage in counting the number of wins, ties, and losses for a given game.
+let win = 0;
+let tie = 0;
+let lose = 0;
+
 // plays a 5 round game that keeps score and reports a winner or loser at the end
 function game() {
-    let win = 0;
-    let tie = 0;
-    let lose = 0;
 
     for (let i = 0; i < 5; i++)
     {
@@ -59,8 +61,12 @@ function game() {
             lose = ++lose;
             console.log(lose);
         }
-        //console.log(win, tie, lose);
     }
+
+    result(win, tie, lose);
+}
+
+function result(win, tie, lose) {
     
     if (win == 5 || win == 4 || win == 3) {
         console.log('You win the game!');
@@ -69,7 +75,7 @@ function game() {
     } else if (tie == 5 || win == 1 & lose == 1 && tie ==3 || win == 2 && lose == 2 && tie == 1) {
         console.log('You tie the game.');
     } else {
-        return 'error';
+        console.log('error');
     }
 }
 
