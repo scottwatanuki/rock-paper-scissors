@@ -42,7 +42,6 @@ let lose = 0;
 
 // plays a 5 round game that keeps score and reports a winner or loser at the end
 function game() {
-
     for (let i = 0; i < 5; i++)
     {
         // prompts user for input and determines the winner for one round
@@ -62,12 +61,10 @@ function game() {
             console.log(lose);
         }
     }
-
     result(win, tie, lose);
 }
 
 function result(win, tie, lose) {
-    
     if (win == 5 || win == 4 || win == 3) {
         console.log('You win the game!');
     } else if (lose == 5 || lose == 4 || lose == 3) {
