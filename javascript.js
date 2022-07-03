@@ -1,4 +1,4 @@
-// computer randomly generating rock, paper, or scissors
+// function to execute computer randomly generating rock, paper, or scissors
 function computerPlay() {
     let result = Math.floor(Math.random()*3);
     if (result == 0) {
@@ -12,7 +12,7 @@ function computerPlay() {
     }
 }
 
-// one round of play between player and computer
+// function to execute one round of rock-paper-scissors between player and computer
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == 'rock' && computerSelection == 'rock') {
         return 'You Tie! Rock ties with Rock.';
@@ -40,11 +40,10 @@ let win = 0;
 let tie = 0;
 let lose = 0;
 
-// plays a 5 round game that keeps score and reports a winner or loser at the end
+// function that plays a 5 round game of rock-paper-scissors that keeps the score
 function game() {
     for (let i = 0; i < 5; i++)
     {
-        // prompts user for input and determines the winner for one round
         const playerSelection = prompt('Choose rock, paper, or scissors: ');
         const computerSelection = computerPlay();
         const outcome = playRound(playerSelection.toLowerCase(), computerSelection);
@@ -64,6 +63,7 @@ function game() {
     result(win, tie, lose);
 }
 
+// function that determines the winner or loser of the game
 function result(win, tie, lose) {
     if (win == 5 || win == 4 || win == 3) {
         console.log('You win the game!');
