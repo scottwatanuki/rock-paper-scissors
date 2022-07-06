@@ -20,3 +20,6 @@ Version 2
         functionality: display the result of one game
 
     function resetGame ()
+
+HTML
+
