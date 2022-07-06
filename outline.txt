@@ -1,0 +1,22 @@
+Version 1
+
+    function computerPlay generates the computer's play
+
+    function playRound returns the output for each of nine scenarios for one round 
+
+    function game asks for user input, logs output, iterates through playRound 5 times, counting the wins, ties, and loses
+
+    function result calculates the outcome of the game given five rounds 
+
+Version 2
+
+    function computerPlay ()
+
+    function playRound ()
+
+    function game ()
+
+    function result () => change to function displayResult ()
+        functionality: display the result of one game
+
+    function resetGame ()

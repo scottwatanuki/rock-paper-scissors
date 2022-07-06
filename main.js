@@ -1,3 +1,7 @@
+function resetGame() {
+    //reset game
+}
+
 // function to execute computer randomly generating rock, paper, or scissors
 function computerPlay() {
     let result = Math.floor(Math.random()*3);
@@ -33,6 +37,11 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
         return 'You Win! Scissors beats Paper.';
     }
+    
+    let wins = game();
+    if (wins >= 5) {
+        return;
+    }
 }
 
 // declare three variables: win, tie, and lose for usage in counting the number of wins, ties, and losses for a given game.
@@ -42,38 +51,50 @@ let lose = 0;
 
 // function that plays a 5 round game of rock-paper-scissors that keeps the score
 function game() {
-    for (let i = 0; i < 5; i++)
-    {
-        const playerSelection = prompt('Choose rock, paper, or scissors: ');
-        const computerSelection = computerPlay();
-        const outcome = playRound(playerSelection.toLowerCase(), computerSelection);
-        console.log(outcome);
-
-        if (outcome == 'You Win! Rock beats Scissors.' || outcome == 'You Win! Paper beats Rock.' || outcome == 'You Win! Scissors beats Paper.') {
-            win = ++win;
-            console.log(win);
-        } else if (outcome == 'You Tie! Rock ties with Rock.' || outcome == 'You Tie! Paper ties with Paper.' || outcome == 'You Tie! Scissors ties with Scissors.') {
-            tie = ++tie;
-            console.log(tie);
-        } else if (outcome == 'You Lose! Rock loses to Paper.' || outcome == 'You Lose! Paper loses to Scissors.' || outcome == 'You Lose! Scissors loses to Rock.') {
-            lose = ++lose;
-            console.log(lose);
+    //every single image will be listening to a click from the player
+    let imgs = document.querySelectorAll('img');
+    imgs.forEach((img) =>  
+    img.addEventListener(('click'), () =>{
+        if(img.id) {
+            playRound(img.id);
         }
+    }))
+
+    const computerSelection = computerPlay();
+    const outcome = playRound(playerSelection, computerSelection);
+    //console.log(outcome);
+
+    if (outcome == 'You Win! Rock beats Scissors.' || outcome == 'You Win! Paper beats Rock.' || outcome == 'You Win! Scissors beats Paper.') {
+        win = ++win;
+        return(win);
+    } else if (outcome == 'You Tie! Rock ties with Rock.' || outcome == 'You Tie! Paper ties with Paper.' || outcome == 'You Tie! Scissors ties with Scissors.') {
+        tie = ++tie;
+        return(tie);
+    } else if (outcome == 'You Lose! Rock loses to Paper.' || outcome == 'You Lose! Paper loses to Scissors.' || outcome == 'You Lose! Scissors loses to Rock.') {
+        lose = ++lose;
+        return(lose);
     }
-    result(win, tie, lose);
+
+    document.querySelector(".playerScore").textContent = `Score ${win}`;
+    document.querySelector(".computerScore").textContent = `Score ${lose}`;
+    document.querySelector(".ties").textContent = `Score ${tie}`;
+    result(win, tie, lose); 
+    return Math.max(win, lose);
 }
+
+function displayRound(playerSelection, computerSelection, winner)
 
 // function that determines the winner or loser of the game
-function result(win, tie, lose) {
+/* function result(win, tie, lose) {
     if (win == 5 || win == 4 || win == 3) {
-        console.log('You win the game!');
+        return('You win the game!');
     } else if (lose == 5 || lose == 4 || lose == 3) {
-        console.log('You lose the game.');
+        return('You lose the game.');
     } else if (tie == 5 || win == 1 & lose == 1 && tie ==3 || win == 2 && lose == 2 && tie == 1) {
-        console.log('You tie the game.');
+        return('You tie the game.');
     } else {
-        console.log('error');
+        return('error');
     }
-}
+} */
 
 game();
