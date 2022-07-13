@@ -97,4 +97,4 @@ function displayRound(playerSelection, computerSelection, winner)
     }
 } */
 
-game();
+game(); // run game
